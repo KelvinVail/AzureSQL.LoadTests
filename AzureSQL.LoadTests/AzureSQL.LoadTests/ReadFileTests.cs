@@ -4,6 +4,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
+using Azure;
+using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
 using CsvHelper;
 using Parquet;
 using Parquet.Data;
@@ -149,11 +152,10 @@ namespace AzureSQL.LoadTests
             //groupWriter.WriteColumn(pickup);
         }
 
-        public static void ToSqlServer(string filePath, string connStr)
+        public static void ToSqlServer(string sqlConn, string blobConn)
         {
-            using SqlConnection conn = new (connStr);
+            using SqlConnection conn = new (sqlConn);
 
-            // Get the schema for the target table
             conn.Open();
             var cmd = conn.CreateCommand();
             cmd.CommandText = "select top 0 * from dbo.trips";
@@ -165,17 +167,16 @@ namespace AzureSQL.LoadTests
                     Schema = new CsvSchema(tableSchema)
                 };
 
-            using var csv = CsvDataReader.Create(filePath, options);
+            var blob = new BlobTests().GetBlob(blobConn);
 
-            using SqlConnection conn2 = new (connStr);
-            conn2.Open();
-            using var bcp = new SqlBulkCopy(conn2)
-            {
-                BulkCopyTimeout = 0,
-                DestinationTableName = "dbo.trips",
-                BatchSize = 10000
-            };
-            bcp.WriteToServer(csv);
+            var blobOption = new BlobOpenReadOptions(false) { BufferSize = 40 };
+            using var sr = new StreamReader(blob.OpenRead(blobOption));
+
+            using var csv = CsvDataReader.Create(sr, options);
+
+            using SqlConnection conn2 = new (sqlConn);
+            var loader = new BulkSqlLoader(sqlConn, "dbo.trips");
+            loader.LoadData(csv);
         }
     }
 }

@@ -33,14 +33,19 @@ namespace AzureSQL.LoadTests.Console
             //timer.Stop();
             //System.Console.WriteLine(count4 + " in: " + timer.ElapsedMilliseconds);
 
-            timer.Reset();
-            timer.Start();
-            ReadFileTests.ToSqlServer(
-                "C:\\Users\\kelvi\\Documents\\WorkDocs\\yellow_tripdata_2018-01.csv",
-                "");
-            timer.Stop();
-            System.Console.WriteLine(timer.ElapsedMilliseconds);
+            //timer.Reset();
+            //timer.Start();
+            //ReadFileTests.ToSqlServer(
+            //    "C:\\Users\\kelvi\\Downloads\\yellow_tripdata_2018-01.csv",
+            //timer.Stop();
+            //System.Console.WriteLine(timer.ElapsedMilliseconds);
 
+            //timer.Reset();
+            //timer.Start();
+            //var downLoader = new BlobTests();
+            //downLoader.Download();
+            //timer.Stop();
+            //System.Console.WriteLine(timer.ElapsedMilliseconds);
         }
     }
 }

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureSQL.LoadTests", "AzureSQL.LoadTests\AzureSQL.LoadTests.csproj", "{4BBBE7C3-97FC-4938-A746-ED3EA55EF792}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureSQL.LoadTests", "AzureSQL.LoadTests\AzureSQL.LoadTests.csproj", "{4BBBE7C3-97FC-4938-A746-ED3EA55EF792}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureSQL.LoadTests.Console", "AzureSQL.LoadTests.Console\AzureSQL.LoadTests.Console.csproj", "{A05880B2-53C3-48E8-A5A1-0BBA1B41B325}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AzureSQL.LoadTests.Console", "AzureSQL.LoadTests.Console\AzureSQL.LoadTests.Console.csproj", "{A05880B2-53C3-48E8-A5A1-0BBA1B41B325}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureSQL.LoadTests.Function", "AzureSQL.LoadTests.Function\AzureSQL.LoadTests.Function.csproj", "{D266DABD-CABD-470B-900E-EED42B34EBED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A05880B2-53C3-48E8-A5A1-0BBA1B41B325}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A05880B2-53C3-48E8-A5A1-0BBA1B41B325}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A05880B2-53C3-48E8-A5A1-0BBA1B41B325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D266DABD-CABD-470B-900E-EED42B34EBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D266DABD-CABD-470B-900E-EED42B34EBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D266DABD-CABD-470B-900E-EED42B34EBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D266DABD-CABD-470B-900E-EED42B34EBED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
